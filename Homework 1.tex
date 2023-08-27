@@ -1,0 +1,150 @@
+\documentclass[12pt]{article}
+\usepackage [margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+
+\begin{document}
+
+\noindent Isaac Kim
+
+\noindent CS 487
+
+\noindent Professor Baldimtsi
+
+\noindent Feb 4, 2023
+
+\begin{center} 
+\textbf{Homework 1}
+\end{center}
+
+\noindent \textbf{2.} 
+
+\noindent \textbf{a)} Expand Pr[\emph{M}='now'$|$\emph{C}='baa'] according to Bayes' Theorem:
+
+\begin{center}
+Pr[\emph{M}='now'$|$\emph{C}='baa'] = $\frac{\text{Pr[\emph{C}='baa'}|\text{\emph{M}='now']} \cdot \text{Pr[\emph{M}='now']}}{\text{Pr[\emph{C}='baa']}}$
+\end{center}
+
+\noindent Here, we could calculate Pr[\emph{C}='baa'] and Pr[\emph{M}='now'] separately, but note that the top of the fraction is 0, where $\text{Pr[\emph{C}='baa'}|M\text{='now']} = 0$ since there exists no key k, such that $Enc_k(\text{'now'}) = \text{'baa'}$ for the shift cipher. Anything multiplied by 0 is 0, and hence, \textbf{Pr[M='now'}$|$\textbf{C='baa'] = 0}.
+\\
+\\
+\noindent \textbf{b)} Expand Pr[\emph{M}='yes'$|$\emph{C}='zft'] according to Bayes' Theorem:
+
+\begin{center}
+Pr[\emph{M}='yes'$|$\emph{C}='zft'] = $\frac{\text{Pr[\emph{C}='zft'}|\text{\emph{M}='yes']} \cdot \text{Pr[\emph{M}='yes']}}{\text{Pr[\emph{C}='zft']}}$
+\end{center}
+
+\noindent To find Pr[\emph{C}='zft'], use law of total probability:
+\begin{center}
+Pr[\emph{C}='zft']=(Pr[\emph{C}='zft'$|$\emph{M}='yes']$\cdot$ Pr[\emph{M}='yes']) + (Pr[\emph{C}='zft'$|$\emph{M}='bye']$\cdot$ Pr[\emph{M}='bye']) + (Pr[\emph{C}='zft'$|$\emph{M}='now']$\cdot$ Pr[\emph{M}='now'])
+\end{center}
+
+\noindent Note that Pr[\emph{C}='zft'$|$\emph{M}='bye']=0 and Pr[\emph{C}='zft'$|$\emph{M}='now']=0 since there exists no key k, such that $Enc_k(\text{'now'}) = \text{'zft'}$ or $Enc_k(\text{'bye'}) = \text{'zft'}$. Then, 
+\begin{center}
+Pr[\emph{C}='zft']=(Pr[\emph{C}='zft'$|$\emph{M}='yes']$\cdot$ Pr[\emph{M}='yes']) + (0$\cdot$ Pr[\emph{M}='bye']) + (0$\cdot$ Pr[\emph{M}='now'])
+
+Pr[\emph{C}='zft']=Pr[\emph{C}='zft'$|$\emph{M}='yes']$\cdot$ Pr[\emph{M}='yes']
+\end{center}
+\noindent Pr[\emph{C}='zft'$|$\emph{M}='yes'] = $\frac{1}{26}$ since the only time this can occur is when k = 1, which has a probability of $\frac{1}{26}$. We know that Pr[\emph{M}='yes']=0.5.
+Hence, Pr[\emph{C}='zft']=$\frac{1}{26}$(0.5)
+
+\noindent Then, 
+\begin{center}
+Pr[\emph{M}='yes'$|$\emph{C}='zft'] = $\frac{\text{Pr[\emph{C}='zft'}|\text{\emph{M}='yes']} \cdot \text{Pr[\emph{M}='yes']}}{\text{Pr[\emph{C}='zft']}}$
+
+Pr[\emph{M}='yes'$|$\emph{C}='zft'] = $\frac{\text{Pr[\emph{C}='zft'}|\text{\emph{M}='yes']} \cdot \text{Pr[\emph{M}='yes']}}{\frac{1}{26}(0.5)}$
+
+Pr[\emph{M}='yes'$|$\emph{C}='zft'] = $\frac{\frac{1}{26}(0.5)}{\frac{1}{26}(0.5)}$
+\end{center}
+Hence, \textbf{Pr[\emph{M}='yes'$|$\emph{C}='zft'] = 1}.
+\\
+\\
+\noindent \textbf{3.} 
+
+\noindent \textbf{a)} Expand Pr[\emph{m}='010'$|$\emph{c}='010'] according to Bayes' Theorem:
+\begin{center}
+Pr[\emph{m}='010'$|$\emph{c}='010'] = $\frac{\text{Pr[\emph{c}='010'}|\text{\emph{m}='010']} \cdot \text{Pr[\emph{m}='010']}}{\text{Pr[\emph{c}='010']}}$
+\end{center}
+\noindent We know that Pr[\emph{c}='010'] = $2^{-n}$, and since $n = 3$, Pr[\emph{c}='010'] = $\frac{1}{8}$. It was given that Pr[\emph{m}='010'] = 0.5. Pr[\emph{c}='010'$|$\emph{m}='010'] = $\frac{1}{8}$ since this is equivalent to the probability that the key k = 000, which is $\frac{1}{8}$. Then, 
+\begin{center}
+Pr[\emph{m}='010'$|$\emph{c}='010'] = $\frac{\frac{1}{8} \cdot 0.5}{\frac{1}{8}} = 0.5$
+\end{center}
+\noindent Hence, \textbf{Pr[\emph{m}='010'$|$\emph{c}='010'] = 0.5}.
+\\
+\\
+\noindent \textbf{b)} This problem is identical to the 3a) except that \emph{m} = '011'. Pr[\emph{m}='011'] = 0.5, and Pr[\emph{c}='010'$|$\emph{m}='011'] = $\frac{1}{8}$ since this is equivalent to the probability that the key k = 001, which is $\frac{1}{8}$. Pr[\emph{c}='010'] does not change. Then, by Bayes' Theorem: 
+\begin{center}
+Pr[\emph{m}='011'$|$\emph{c}='010'] = $\frac{\text{Pr[\emph{c}='010'}|\text{\emph{m}='011']} \cdot \text{Pr[\emph{m}='011']}}{\text{Pr[\emph{c}='010']}}$
+
+Pr[\emph{m}='010'$|$\emph{c}='010'] = $\frac{\frac{1}{8} \cdot 0.5}{\frac{1}{8}} = 0.5$
+\end{center}
+\noindent Hence, \textbf{Pr[\emph{m}='011'$|$\emph{c}='010'] = 0.5}.
+\\
+\\
+\noindent \textbf{c)} We know that an encryption scheme (Gen, Enc, Dec) with message space \emph{M} and ciphertext space \emph{C} is perfectly secret if for every distribution over \emph{M}, for all $m_0, m_1 \in M$ and $c \in C$ with Pr[$C = c$] $>$ 0, it holds that:
+\begin{center}
+Pr[$C = c|M=m_0]$ = Pr[$C = c|M=m_1]$
+\end{center}
+\noindent To show that an encryption scheme is not secure, the opposite must hold true. Or, an encryption scheme  with message space \emph{M} and ciphertext space \emph{C} is \emph{not} perfectly secure  if there exists a distribution over $M$ such that for some $m_0,m_1 \in M$ and some $c \in C$ with Pr[$C = c] > 0$,
+\begin{center}
+Pr[$C = c|M=m_0]$ $\neq$ Pr[$C = c|M=m_1]$
+\end{center}
+\noindent If Alice decides to exclude the all zeroes key from her keyspace, then her encryption scheme becomes \emph{not} perfectly secure. Let $M$ be Alice's message space and $C$ be Alice's ciphertext space. Also let $m \in M$ be Alice's original message and let $m_1 = m$ and $m_0 \in M$ be an arbitrary message, $m_0 \neq m_1$, and $c \in C$, Pr$[C=c] > 0$. 
+\\
+\\
+\noindent Consider the ciphertext $c_0 \in C$ with Pr$[C=c_0]>0$, where $c_0 = Enc_{k_0}(m)$, $k_0 = 0^\lambda$. Then, since $k_0$ is omitted from our keyspace, for all keys $k$ in our keyspace/\{$k_0$\}, $Enc_{k}(m) \neq c_0$. Then, Pr$[C=c_0|M=m]$ = Pr$[C=c_0|M=m_1]$ = 0. However, Pr$[C=c_0|M=m_0] \neq 0$. 
+\\
+\\
+\noindent Hence, Pr$[C=c_0|M=m_1] \neq Pr[C=c_0|M=m_0]$, and Alice's new encryption scheme is \emph{not} perfectly secure!
+\\
+\\
+\noindent \textbf{d)} Our new keyspace is now $k = (k_1, k_2), k_1, k_2 \in \{0,1\}^l$. Hence, there are $2^l \cdot 2^l = 2^{2l}$ keys in our new keyspace.
+\\
+\\
+\noindent \textbf{e)} Since our encryption algorithm uses $c = k_1 \text{ XOR }(k_2 \text{ XOR } m)$, we can generate keys such that 2 messages $m_0, m_1 \in M$ have the same ciphertext $c \in C$. Note that each key $k$ in our new keyspace has an equal chance of being picked $(\frac{1}{l^2})$. The probability of generating a certain ciphertext $c \in C$ for $m_0$ is the same as generating the same ciphertext $c \in C$ for $m_1$. Hence, Pr$[C=c|M=m_0] = Pr[C=c|M=m_1]$.
+\\
+\\
+\noindent \textbf{4.} An attacker A will send two messages, $m_0, m_1$ to the challenger. The probability that A wins (the scenario where the attacker picks $b' = b$) is written as Pr[Exp$_{A,\pi}(n)=1$]. The Challenger picks $b = 0$ or $b = 1$ randomly to decide which message to encrypt, each with a probability of $\frac{1}{2}$. According to the law of total probability, we can rewrite Pr[Exp$_{A,\pi}(n)=1$] as:
+\begin{center}
+Pr[Exp$_{A,\pi}(n)=1$] = Pr[A picks 0$|b=0] \cdot \frac{1}{2}$ + Pr[A picks 1$|b=1] \cdot \frac{1}{2}$
+\end{center}
+Consider an adversary that picks messages $m_0$ = 'aaaa', $m_1$ = 'aaab', $m_0, m_1 \in M, |M| = 4$. Given these messages and $|K| = 2$, for any key $k$, the second and last character of the ciphertext $c = Enc_{k}(m_0)$ will be the same, while the second and last character of $c = Enc_{k}(m_1)$ will be one apart. Then, the attacker will only have to look at these characters to distinguish which message was encrypted. Then:
+
+Case 1 (b = 0): Pr[A picks 0$|b=0]$ = 1
+
+Case 2 (b = 1): Pr[A picks 1$|b=1]$ = 1
+
+In both cases, the attacker will know exactly which message was encrypted.
+
+\noindent Then, Pr[Exp$_{A,\pi}(n)=1$] = $1 \cdot \frac{1}{2}$ + $1 \cdot \frac{1}{2} = \frac{1}{2} + \frac{1}{2} = 1$ which is clearly not negligible ($\frac{1}{2} + \frac{1}{2} > \frac{1}{2} + \text{negl}(n)$, n is security parameter). Hence, the Vignerer cipher is not EAV-secure.
+\\
+\\
+\noindent \textbf{5.} Let $G: \{0,1\}^n \rightarrow \{0,1\}^{2n}$ be a PRG for every $n$), and let $s \in \{0,1\}^n$. To show that the following constructions are not PRGs, we must show that either of these do not hold:
+
+1. For every $n$, it holds that $l(n)>n$
+
+OR
+
+2. For any PPT algorithm $D$, there is a negligible function negl such that: 
+\begin{center}
+$|\text{Pr}[D(G_a(s)) = 1] - \text{Pr}[D(r) = 1]| \leq $negl$(n)$
+\end{center}
+where the first probability is taken over uniform choice of $s \in \{0,1\}^n$ and the randomness of $D$, and the second probability is taken over uniform choice of $f \in \{0,1\}^{l(n)}$ and the randomness of $D$.
+\\
+\\
+\noindent \textbf{a)} Expansion factor = $2n||2n = 4n > n$. This scenario is similar to what we did in lecture. The range for $G_a(s)$ consists of series of bits whose first half is identical to the second half. Let $D$ be our distinguisher such that $D(w) = 1$ if and only if there exists an $s \in \{0,1\}^n$ such that $G_a(s) = w$ and let $r \in \{0,1\}^{4n}$. We must show that $|\text{Pr}[D(G_a(s)) = 1] - \text{Pr}[D(r) = 1]| \leq $negl$(n)$. Note that there are $2^{4n}$ possible strings under the uniform distribution $\{0,1\}^{4n}$, each having a probability of $2^{-4n}$ of being picked. The number of different strings in the range of $G_a(s)$ under uniform $n$-bit seed is $2^{n}$. Therefore, the fraction of strings of length 4$n$ that are in the range of $G_a$ is at most $\frac{2^{n}}{2^{4n}} = 2^{-3n}$. Also note that most of the strings of length $4n$ have a probability of 0 being output by $G_a$. Then: 
+
+Case 1 ($G_a(s) = w$): Pr[$D(G_a(s)) = 1]$ = 1
+
+Case 2 ($w$ is taken from $r$ over uniform choice and there exists an $s\in \{0,1\}^n$ such that $G_a(s)=w$): Pr[$D(r) = 1] = 2^{-3n}$
+
+\noindent Hence, $|\text{Pr}[D(G_a(s)) = 1] - \text{Pr}[D(r) = 1]| = 1 - 2^{-3n}$ which is clearly greater than negl$(n)$.
+\\
+\\
+\noindent \textbf{b)} Expansion factor = $2n||2n = 4n > n$. Note that the latter half of $G_b(s)$ does not change. Then, the number of different strings in the range of $G_b(s)$ under uniform $n$-bit seed is $2^{n}$. The range for $G_a(s)$ consists of series of bits whose first $2n$ bits is identical to $G(s)$, and the next $2n$ bits are $G(0^n)$. Let $D$ be our distinguisher such that $D(w) = 1$ if and only if there exists an $s \in \{0,1\}^n$ such that $G_b(s) = w$ and let $r \in \{0,1\}^{4n}$. We must show that $|\text{Pr}[D(G_b(s)) = 1] - \text{Pr}[D(r) = 1]| \leq $negl$(n)$. There are $2^{4n}$ possible strings under the uniform distribution $\{0,1\}^{4n}$, each having a probability of $2^{-4n}$ of being picked. Therefore, the fraction of strings of length 4$n$ that are in the range of $G_b$ is at most $\frac{2^{n}}{2^{4n}} = 2^{-3n}$. Then: 
+
+Case 1 ($G_a(s) = w$): Pr[$D(G_a(s)) = 1]$ = 1
+
+Case 2 ($w$ is taken from $r$ over uniform choice and there exists an $s\in \{0,1\}^n$ such that $G_b(s)=w$): Pr[$D(r) = 1] = 2^{-3n}$
+
+\noindent Hence, $|\text{Pr}[D(G_a(s)) = 1] - \text{Pr}[D(r) = 1]| = 1 - 2^{-3n}$ which is clearly greater than negl$(n)$.
+\end{document}
